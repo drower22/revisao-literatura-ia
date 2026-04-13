@@ -205,13 +205,15 @@ revisao-literatura-ia/
     ↓
 [06] Ranking de Relevância        ← Remove duplicatas + filtra por score
     ↓
-[00] Calibragem de Prompts        ← Adapta prompts aos seus dados
+[00] Calibragem de Prompts        ← REVISÃO HUMANA: Artigos seminais
     ↓
 [02] Conversão PDF → Markdown     ← Extrai texto estruturado
     ↓
 [03] Fichamento Paralelo          ← Claude + Gemini em paralelo
     ↓
 [04] Validação Krippendorff       ← Calcula Alpha de concordância
+    ↓
+[REVISÃO HUMANA]                  ← Amostra aleatória 10-30% dos fichamentos
     ↓
 [05] Síntese Qualitativa          ← Matriz temática + conceitos
     ↓
@@ -254,7 +256,13 @@ Este projeto introduz várias inovações que o diferenciam de revisões sistem�
 **Benefício**: Alinhado com Open Science e PRISMA 2024-IA  
 **Onde**: Todos os scripts + `analysis/`
 
-### 6. Processamento Paralelo
+### 6. Validação Humana Estratificada
+**O que é**: Amostra aleatória de 10-30% dos fichamentos revisada manualmente após Krippendorff's Alpha  
+**Por quê**: Garante qualidade final e detecta erros que métricas estatísticas podem não capturar  
+**Benefício**: Combina eficiência da IA com rigor da revisão humana  
+**Onde**: Processo manual documentado em `analysis/validacao/`
+
+### 7. Processamento Paralelo
 **O que é**: Claude e Gemini processam simultaneamente (não sequencial)  
 **Por quê**: Reduz tempo de espera pela metade  
 **Benefício**: 100 artigos em ~30-60 min (vs 2-3 horas sequencial)  
@@ -369,20 +377,34 @@ python scripts/03-fichamento_ia_krippendorff.py
 #         analysis/fichamentos/*_gemini.md
 ```
 
-### Fase 4: Validação e Síntese (30 minutos)
+### Fase 4: Validação Estatística (5 minutos)
 ```bash
 # 6. Validar concordância entre IAs
 python scripts/04-validacao_krippendorff.py
 # Output: analysis/validacao/krippendorff_alpha_resultado.txt
 # ✅ Alpha >= 0.70 = qualidade aprovada
+```
 
-# 7. Gerar síntese qualitativa
+### Fase 5: Validação Humana (2-4 horas)
+```bash
+# 7. Revisar amostra aleatória de fichamentos (10-30%)
+# PROCESSO MANUAL:
+# - Sortear amostra aleatória
+# - Revisar fichamentos Claude vs Gemini vs sua leitura
+# - Documentar discrepâncias
+# - Validar qualidade final
+# Output: analysis/validacao/revisao_humana.csv
+```
+
+### Fase 6: Síntese Final (30 minutos)
+```bash
+# 8. Gerar síntese qualitativa
 python scripts/05-sintese_qualitativa.py
 # Output: analysis/sintese/relatorio_final.md
 #         analysis/sintese/matriz_conceitos.csv
 ```
 
-**Tempo total estimado**: 4-8 horas (dependendo do número de artigos)
+**Tempo total estimado**: 6-12 horas (dependendo do número de artigos)
 
 ---
 
@@ -397,7 +419,10 @@ R: A/B Testing com Claude + Gemini detecta vieses que seriam invisíveis usando 
 R: É uma métrica estatística robusta para medir concordância entre avaliadores (mais confiável que Cohen's Kappa). Valores >= 0.70 indicam concordância boa/excelente.
 
 **P: Por que não usar apenas revisão humana?**  
-R: Revisar 100+ artigos manualmente leva semanas/meses. Com IA + validação estatística, reduzimos para dias sem perder qualidade. A calibragem inicial garante 90%+ de concordância.
+R: Revisar 100+ artigos manualmente leva semanas/meses. Com IA + validação estatística + amostra humana, reduzimos para dias sem perder qualidade. A calibragem inicial garante 90%+ de concordância.
+
+**P: A revisão é 100% automatizada?**  
+R: **Não**. Há 3 momentos de revisão humana: (1) Calibragem inicial com artigos seminais, (2) Validação de amostra aleatória (10-30%) após fichamento, (3) Síntese final. Isso garante rigor científico.
 
 ### Sobre Dados e Configuração
 
