@@ -1,0 +1,122 @@
+# ARTIGOS SEMINAIS PARA CALIBRAGEM
+# ===================================
+# 
+# Formato: artigo_id | titulo | tipo | arquivo_baseline.md
+#
+# INSTRUÇÃO:
+# 1. Selecione 15-20 artigos que você JÁ LEU e conhece bem
+# 2. Para cada um, faça um fichamento MANUAL (sua leitura)
+# 3. Salve em: data/calibragem/leituras_baseline/[arquivo].md
+# 4. Liste aqui com o caminho completo
+# 5. Execute: python scripts/00-calibragem_prompts.py
+#
+# TIPOS RECOMENDADOS:
+# - FUNDAMENTAL: Artigos clássicos da área (Cohen 1990, Zahra 2002, Teece 2007)
+# - ORIENTADOR: Publicações do seu orientador
+# - BASELINE: Sua própria pesquisa já lida
+# - CONTEXTO: Artigos similares em MPE/Brasil
+#
+# ============================================================================
+
+# GRUPO 1: FUNDAMENTAIS (Must-have)
+# Selecione 3-4 artigos CLÁSSICOS que você conhece de cor
+
+001|Cohen & Levinthal (1990) - Absorptive Capacity|FUNDAMENTAL|cohen_levinthal_1990.md
+002|Zahra & George (2002) - Absorptive Capacity Dimensionality|FUNDAMENTAL|zahra_george_2002.md
+003|Teece et al (1997) - Dynamic Capabilities|FUNDAMENTAL|teece_1997.md
+
+# GRUPO 2: ORIENTADOR & SUAS PUBLICAÇÕES
+# Artigos do seu orientador ou coautoria sua
+
+#004|[Nome Orientador] - [Título]|ORIENTADOR|orientador_publicacao.md
+#005|[Seu Nome] - [Título Publicação Anterior]|BASELINE|sua_publicacao_anterior.md
+
+# GRUPO 3: CONTEXTO MPE/BRASIL
+# Artigos sobre PME/MPE que você leu
+
+#006|[Autor] - MPE em [País]|CONTEXTO|artigo_mpe_brasil.md
+#007|[Autor] - Inovação PME|CONTEXTO|artigo_inovacao_pme.md
+
+# GRUPO 4: CONTEXTO SIMILAR
+# Artigos com metodologia similar
+
+#008|[Autor] - Estudo Qualitativo em SME|CONTEXTO|artigo_qual_sme.md
+#009|[Autor] - Network Analysis|CONTEXTO|artigo_network.md
+
+# GRUPO 5: RECENTES/CONTEMPORÂNEOS
+# Artigos recentes na área
+
+#010|[Autor] - [Tema] 2024|RECENTE|artigo_recente_2024.md
+
+# ============================================================================
+#
+# INSTRUÇÕES DE PREPARAÇÃO:
+#
+# Para cada artigo que adicionar acima:
+#
+# 1. Crie um arquivo data/calibragem/leituras_baseline/[NOME].md
+#    com seu fichamento MANUAL (sua leitura original)
+#
+# 2. Use template ABAIXO como base:
+#
+# ============================================================================
+
+# TEMPLATE PARA SEU FICHAMENTO MANUAL (copie para leituras_baseline/)
+#
+# ## Metadados
+# - Autores: [extrair]
+# - Ano: [extrair]
+# - DOI: [extrair]
+# - Periódico: [extrair]
+# - País: [extrair]
+# - N amostra: [extrair]
+# - Tipo: [Qualitativo/Quantitativo/Misto]
+#
+# ## Resumo Executivo (sua leitura)
+# [O que o artigo discute, conforme sua leitura]
+#
+# ## 1. Objetivo/Pergunta Pesquisa
+# [Qual era a pergunta central - conforme você leu]
+#
+# ## 2. Quadro Teórico
+# Teorias: [quais mencionadas]
+# Conceitos: [como definem no artigo]
+#
+# ## 3. Metodologia
+# [Delineamento, método, amostra, contexto]
+#
+# ## 4. Achados Principais
+# [Os 5 achados principais conforme sua leitura]
+#
+# ## 5. Proposições (conforme seu projeto)
+# P1: [sua avaliação do suporte]
+# P2: [sua avaliação do suporte]
+# etc.
+#
+# ## 6. Pontos Fortes
+# [3 pontos fortes conforme sua leitura]
+#
+# ## 7. Limitações
+# [3 limitações conforme sua leitura]
+#
+# ## 8. Lacunas
+# [3 lacunas conforme sua leitura]
+#
+# ## 9. Contexto Brasil
+# [Se menciona Brasil e como]
+#
+# ## 10. Relevância
+# [Por que é relevante para seu projeto]
+
+# ============================================================================
+#
+# APÓS COMPLETAR LISTA ACIMA:
+#
+# 1. Salve este arquivo
+# 2. Execute: python scripts/00-calibragem_prompts.py
+# 3. Revise: analysis/calibragem/relatorio_calibragem.md
+# 4. Se concordância <90%, refine prompts_calibrados.py
+# 5. Reexecute até 90%+
+# 6. Aprove com: analysis/calibragem/CHECKLIST-PRE-FICHAMENTO.md
+#
+# ============================================================================
