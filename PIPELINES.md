@@ -1,6 +1,18 @@
 # 🔄 Pipeline Completo - Fluxo de Execução
 
-> **Leia isto se quiser entender**: Exatamente o que cada script faz, em que ordem, e o que esperar de output
+> **Objetivo**: Entender exatamente o que cada script faz, em que ordem executar, e o que esperar de output
+
+**Leia este documento ANTES de executar qualquer script!**
+
+---
+
+## 📋 Índice
+
+1. [Visão Geral](#-visão-geral)
+2. [Execução Passo-a-Passo](#-execução-passo-a-passo)
+3. [Tempos Estimados](#️-tempos-totais-estimados)
+4. [Outputs Principais](#-outputs-principais)
+5. [Próximos Passos](#próximo)
 
 ---
 
